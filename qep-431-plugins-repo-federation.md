@@ -67,7 +67,7 @@ We are refering the broader community here, like Organizations and Individuals, 
 - Planet
 - etc.
 
-For these, we will provide an initial template (see the section **Move plugins.qgis.org to a static website** ) to set up their repo on GitHub or Gitea etc. We note also that these plugins are not endorsed or checked by the QGIS project in any way, but they are endorsed by the local user group.
+For these, we will provide an initial template (see the section **Move plugins.qgis.org to a static website** ) to set up their repo on GitHub or Gitea etc. We note also that these plugins are not endorsed or checked by the QGIS project in any way, but they are endorsed by the organization.
 
 The hosting, management, policy, review process will be managed by an organization or individual. QGIS.org would:
 
