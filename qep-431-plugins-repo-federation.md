@@ -99,6 +99,11 @@ The federation will considerably decrease traffic on our server.
 
 ## Further Considerations/Improvements
 
+### Block new plugin uploads
+
+Once this QEP approved, any upload of new plugins should be blocked to make the migration process easier. Upload of new version might continue but will probably be blocked as well.
+This part can be done by blocking the login feature so the website will be read-only.
+
 ### Communication
 
 We recently implemented the email-verification feature which allows us to verify the correspondance of the auhtor listed in each plugin but also communicate breaking changes. With that in place, we could start a campaign that:
