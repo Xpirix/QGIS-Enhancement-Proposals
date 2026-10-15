@@ -105,7 +105,7 @@ We also encourage the community to use the same approach. We will also provide a
 
 Issued from the discussion in Laax, a suggestion of adding new fields in metadata was also raised to address quality issues:
 
-- `monitization`: free, freemium (paid add-ons), requires subscription, contains ads
+- `monetization`: free, freemium (paid add-ons), requires subscription, contains ads
 - `ai_usage`: none, assisted, generated
 - `network_access`: none, optional, required
 - `runtime_downloads`: true/false Does it fetch and install code or binaries after installation?
