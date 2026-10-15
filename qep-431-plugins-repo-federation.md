@@ -20,6 +20,14 @@ There are too many new plugins/versions arriving on the Plugins repo and the AI-
 
 Earlier this year, we have implemented the QA and security checks (QEP 409) that catches real issues. However, it is more likely a tool exclusively focused on the code quality (with false positives and false negatives issues raised) without any functional checks.
 
+## Terminology
+
+**1. Directory**: A list of plugin repositories with a low bar to entry to be added to the list.
+**2. Repository**: A collection of plugins hosted by an organisation's directory
+**3. Plugin**: An individual plugin hosted in a repository
+**4. Plugin Version**: An archive of plugin versions showing the passage or release time for a single plugin.
+
+
 
 ## Suggested solutions
 
@@ -30,49 +38,66 @@ The main point is that **"if QGIS.org hosts something, people should able to tru
 
 #### 1. Official QGIS Hosted plugins
 
-This part would host plugins on the official plugins.qgis.org server. The criteria of how a plugin can be hosted there has not been discussed yet. An initial critedia suggestion would:
+This part would host plugins on the official plugins.qgis.org server. These plugins are **trusted** and **maintained by the QGIS community** and undergo **strict quality control**. The process to have a new plugin added to this list will be through a **[QEP (QGIS-Enhancement-Proposal)](https://github.com/qgis/QGIS-Enhancement-Proposals)**.
 
-- **Combined trust on both plugin and author**: even if the author has self-approve permission, any new plugin (not version) uploaded by the author should be always reviewed if it should go under the official repo or federated repo
-- **High quality plugin**: passes all automated checks, have all necessary tags
+With that in place, there will be a list of few plugins that are hosted here with a badge (both on the website and the plugins manager) saying "Trusted by QGIS.org".
 
-With that in place, there will be only a few plugins that are hosted here with a badge (both on the website and the plugins manager) saying "Verified by QGIS.org".
+#### 2. User Group plugins
 
-#### 2. QGIS User Groups hosted plugins
+By User Groups, we are refering to the recognized ones listed at https://qgis.org/community/groups/list/, for example:
+- Netherlands
+- Switzerland
+- etc.
 
-The hosting, management, policy (paid review?), review process will be managed by a user group. QGIS.org would:
+For these, we will provide an initial template (see the section **Move plugins.qgis.org to a static website** ) to set up their repo on GitHub or Gitea etc. We note also that these plugins are not endorsed or checked by the QGIS project in any way, but they are endorsed by the local user group.
+
+The hosting, management, policy, review process will be managed by a user group. QGIS.org would:
 - Register the repository link to the official repo, 
-- Initially and periodically review the repository (not all plugins)
+- Initially and periodically review the repository (not plugins)
 - Harvest it nightly and publish its plugins 
-- Add a check mark badge with something like "Verified by QGIS NL" for example
+- Add a check mark badge with something like "Trusted by QGIS NL" for example
 - Repositories can be unlinked from the official repo
 
-The suggestion here is to make the current "QGIS-Plugins-Website" repository as a template (or create a new repo template if necessary) that can be easily deployed. Once the new repository is registered on the official QGIS.org, the list of plugins from plugins.qgis.org will also contain the ones from user groups. However, the download links will point to the user group's server.
+Once a new repository is registered on the official QGIS.org, the list of plugins on plugins.qgis.org will also contain the ones from user groups. However, the download links will point to the user group's server.
 
-#### 3. Organization-hosted and self-hosted plugins
+#### 3. Community plugins
 
-The hosting, management, policy (paid review?), review process will be managed by an organization or individual. The current repo "QGIS-Plugins-Website" can be also used to spin up the plugins' repo. Upon the organization or individual's request, QGIS.org can:
+We are refering the broader community here, like Organizations and Individuals, beside user groups. For example:
+- WorldBank
+- Planet
+- etc.
+
+For these, we will provide an initial template (see the section **Move plugins.qgis.org to a static website** ) to set up their repo on GitHub or Gitea etc. We note also that these plugins are not endorsed or checked by the QGIS project in any way, but they are endorsed by the local user group.
+
+The hosting, management, policy, review process will be managed by an organization or individual. QGIS.org would:
 
 - Register the repository link to the official repo
-- Initially and periodically review the repository (not all plugins)
+- Initially and periodically review the repository (not plugins)
 - Only list the repo link (no harvesting and plugins list) on the plugins.qgis.org website
 - These plugins won't be automatically listed in the plugin manager.
 - Add a documentation on how to add it to the plugin manager.
-- They will have a badge like "Not verified" both on plugins.qgis.org and on the plugin manager.
 - Repositories can be unlinked from the official repo
 
-We can eventually consider having a "verified" Badge for these repos but it would probably require a spefic criteria and votes...
+Once the new repository is registered on the official QGIS.org, they will have a badge like "Not verified" both on plugins.qgis.org and on the plugin manager.
+
 
 ## Move plugins.qgis.org to a static website
 
-Federating most of the plugins to other repositories will make the official repo really light and the few plugins left wouldn't need all the sofisticated Django-based features. We could think of it as a directory that just aggregates the list of plugins officialy hosted and those harvested from third-party repositories.
+Federating most of the plugins to other repositories will make the official repo really light and the maintenance wouldn't need all the sofisticated Django-based features. So we can consider abandoning the Django-based app in favour of a static website:
+
+- For the data, we could use a JSON file as a datasource.
+- It will list the Verified plugins and the third party repositories link on a nice page; 
+- Then, we will render a static plugins.xml files along with some tooling (offline command line app) from our collection of official plugins.
+
+The suggested stack here is [Hugo](https://gohugo.io/) which is a Markdown base framework for building static websites. We are already using it accross various sites including the main QGIS.org website. Most of the automated updates are using scheduled GitHub workflows that call for Python script and use auto-commit to update the content.
+
 
 An early suggested basic design would be:
-
 
 - **QGIS.org hosted:** Specific plugin Repo -> CI -> Plugins S3 bucket -> JSON list on the Static site -> Render plugins XML on each build
 - **User Group Hosted:** User Group Repo -> Register link on the QGIS.org hosted static repo -> Hourly harvesting ->  JSON list on the Static site -> Merge list to the XML
 
-For federated repositories, maintainers are free to choose the stack to manage and host plugins. The current Django-based stack (QGIS-Plugins-Website) can be used as well. We should just make sure that the link provided to harvest the plugins list contains enough information and probably standardized to make the process easier.
+We also encourage the community to use the same approach. We will also provide a public GitHub template of the Hugo-based stack.
 
 ### New fields in metadata
 
