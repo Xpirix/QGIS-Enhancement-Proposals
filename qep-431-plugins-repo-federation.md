@@ -1,4 +1,4 @@
-# QGIS Enhancement: Improve quality and federate repositories for plugins
+# QGIS Enhancement:  Federate plugins repositories and quality enhancement
 
 **Date** 2026/10/14
 
@@ -10,12 +10,12 @@
 
 # Summary
 
-We held some **discussions during the contributor meeting in Laax** to gather ideas and suggestion about how could we shape the QGIS Plugins repository facing the current issues and prevent future problems due to this exponential growth. The convergence point leans toward the federation of the doubtful plugins away to other plugins.
+We held some **discussions during the contributor meeting in Laax** to gather ideas and suggestion about how could we shape the QGIS Plugins repository facing the current issues and prevent future problems due to its exponential growth. The convergence point leans toward the federation of the doubtful plugins away to other plugins.
 
 There are too many new plugins/versions arriving on the Plugins repo and the AI-assisted plugin has increased the volume. We went from about 3k plugins at the begining of 2026 to about 4.7k in October 2026. However, reviews are shallow and there is only one main volunteer contributor who does the review; and the qualities of plugins are at stakes with different angles:
 
 - **Security:** A plugin can do almost anything on the user's system and a proper security review is not realistic with current resources.
-- **Quality:** Some points were rised during the discussion about plugins that are forked from existing ones, plugins without open issue trackers, ones that are not easy to find in QGIS, functionality duplicated ones, non-English descripition and missing tags (AI-assisted, needs subscription, binary blobs, post-install downloads, ads, manual installation...)
+- **Quality:** Some points were rised during the discussion about plugins that are forked from existing ones, plugins without open issue trackers, ones that are not easy to find in QGIS, ones with functionality duplicated, ones with non-English descripition, missing tags (AI-assisted, needs subscription, binary blobs, post-install downloads, ads, manual installation...)
 - **Infrastructure pressure:** some parties harvest the whole repository every night. This eats bandwidth (and exceed the Hetzner traffic cap) and makes download counts meaningless. Ratings were open to vote-farming and have now been removed.
 
 Earlier this year, we have implemented the QA and security checks (QEP 409) that catches real issues. However, it is more likely a tool exclusively focused on the code quality (with false positives and false negatives issues raised) without any functional checks.
@@ -23,7 +23,60 @@ Earlier this year, we have implemented the QA and security checks (QEP 409) that
 
 ## Suggested solutions
 
+
+### Federated repositories
+
+The main point is that **"if QGIS.org hosts something, people should able to trust it"** so we should make sure that the official QGIS Plugins Website only provides plugins that we can trust from upstream and federate doubtful plugins away to other repositories. From the disscussion in Laax, this could be done in three levels:
+
+#### 1. Official QGIS Hosted plugins
+
+This part would host plugins on the official plugins.qgis.org server. The criteria of how a plugin can be hosted there has not been discussed yet. An initial critedia suggestion would:
+
+- **Combined trust on both plugin and author**: even if the author has self-approve permission, any new plugin (not version) uploaded by the author should be always reviewed if it should go under the official repo or federated repo
+- **High quality plugin**: passes all automated checks, have all necessary tags
+
+With that in place, there will be only a few plugins that are hosted here with a badge (both on the website and the plugins manager) saying "Verified by QGIS.org".
+
+#### 2. QGIS User Groups hosted plugins
+
+The hosting, management, policy (paid review?), review process will be managed by a user group. QGIS.org would:
+- Register the repository link to the official repo, 
+- Initially and periodically review the repository (not all plugins)
+- Harvest it nightly and publish its plugins 
+- Add a check mark badge with something like "Verified by QGIS NL" for example
+- Repositories can be unlinked from the official repo
+
+The suggestion here is to make the current "QGIS-Plugins-Website" repository as a template (or create a new repo template if necessary) that can be easily deployed. Once the new repository is registered on the official QGIS.org, the list of plugins from plugins.qgis.org will also contain the ones from user groups. However, the download links will point to the user group's server.
+
+#### 3. Organization-hosted and self-hosted plugins
+
+The hosting, management, policy (paid review?), review process will be managed by an organization or individual. The current repo "QGIS-Plugins-Website" can be also used to spin up the plugins' repo. Upon the organization or individual's request, QGIS.org can:
+
+- Register the repository link to the official repo
+- Initially and periodically review the repository (not all plugins)
+- Only list the repo link (no harvesting and plugins list) on the plugins.qgis.org website
+- These plugins won't be automatically listed in the plugin manager.
+- Add a documentation on how to add it to the plugin manager.
+- They will have a badge like "Not verified" both on plugins.qgis.org and on the plugin manager.
+- Repositories can be unlinked from the official repo
+
+We can eventually consider having a "verified" Badge for these repos but it would probably require a spefic criteria and votes...
+
+## Move plugins.qgis.org to a static website
+
+Federating most of the plugins to other repositories will make the official repo really light and the few plugins left wouldn't need all the sofisticated Django-based features. We could think of it as a directory that just aggregates the list of plugins officialy hosted and those harvested from third-party repositories.
+
+An early suggested basic design would be:
+
+
+- **QGIS.org hosted:** Specific plugin Repo -> CI -> Plugins S3 bucket -> JSON list on the Static site -> Render plugins XML on each build
+- **User Group Hosted:** User Group Repo -> Register link on the QGIS.org hosted static repo -> Hourly harvesting ->  JSON list on the Static site -> Merge list to the XML
+
+For federated repositories, maintainers are free to choose the stack to manage and host plugins. The current Django-based stack (QGIS-Plugins-Website) can be used as well. We should just make sure that the link provided to harvest the plugins list contains enough information and probably standardized to make the process easier.
+
 ### New fields in metadata
+
+**This part is independant from the federation and can be applied before or after**
 
 Issued from the discussion in Laax, a suggestion of adding new fields in metadata was also raised to address quality issues:
 
@@ -38,56 +91,6 @@ Issued from the discussion in Laax, a suggestion of adding new fields in metadat
 
 The website can store and display them first; the Desktop plugin manager can show and filter on them in a later release.
 
-
-### Federated repositories
-
-The main point is that **"if QGIS.org hosts something, people should able to trust it"** so we should make sure that the official QGIS Plugins Website only provides plugins that we can trust from upstream and federate doubtful plugins away to other repositories. From the disscussion in Laax, this could be done in three levels:
-
-#### 1. Official QGIS Hosted plugins
-
-This part would be the plugins that are directly hosted on the plugins.qgis.org server. The criteria of how a plugin can be hosted there has not been discussed yet. An initial critedia suggestion would:
-- Combined trust on both plugin and author: even if the author has self-approve permission, any new plugin (not version) uploaded by the author should be always reviewd if it should go under the official repo or federated repo
-- High quality plugin: passes all automated checks, have all necessary tags
-
-With that in place, there will be only a few plugins that are hosted here with a badge (both on the website and the plugins manager) saying "Verified by QGIS.org".
-
-#### 2. QGIS User Groups hosted plugins
-
-The hosting, management, policy (paid review?), review process will be managed by a user group. QGIS.org would:
-- Register the repository link to the official repo, 
-- Initially and periodically review the repository (not all plugins)
-- Harvest it nightly and publish its plugins 
-- Add a check mark badge with something like "Verified by QGIS NL"
-- Repositories can be unlinked from the official repo
-
-The suggestion here is to make the current "QGIS-Plugins-Website" repository as a template (or create a new repo template if necessary) that can be easily deployed. Once the new repository is registered on the official QGIS.org, the list of plugins from plugins.qgis.org will also contain the ones from the user group. However, the download links will point to the user group's server.
-
-#### 3. Organization-hosted and self-hosted plugins
-
-The hosting, management, policy (paid review?), review process will be managed by an organization or a person. The current repo "QGIS-Plugins-Website" can be also used to spin up the plugins' repo. Upon the organization or user's request, QGIS.org can:
-
-- Register the repository link to the official repo
-- Initially and periodically review the repository (not all plugins)
-- These plugins will not be listed in the plugin manager
-- Only list the repo link (no harvesting and plugins list) on the plugins.qgis.org website
-- Add a documentation on how to add it to the plugin manager.
-- They will have a badge like "Not verified" both on plugins.qgis.org and on the plugin manager.
-- Repositories can be unlinked from the official repo
-
-It should be possible to consider having a "verified" Badge for these repos but it would probably require a spefic criteria, votes...
-
-## Move plugins.qgis.org to a static website
-
-Federating most of the plugins to other repositories will make the official repo really light and the few plugins left wouldn't need all the sofisticated Django-based features. We could think of it as a directory that just aggregates the list of plugins officialy hosted and those harvested from third-party repositories.
-
-An early suggested basic design would be:
-
-
-- **QGIS.org hosted:** Specific plugin Repo -> CI -> Plugins S3 bucket -> JSON list on the Static site -> Render plugins XML on each build
-- **User Group Hosted:** User Group Repo -> Register link on the QGIS.org hosted static repo -> Hourly harvesting ->  JSON list on the Static site -> Merge list to the XML
-
-For federated repositories, they are free to choose the stack to manage and host plugins. The current Django-based stack (QGIS-Plugins-Website) can be used as well. We should just make sure that the link provided to harvest the plugins list contains enough information and probably standardized to make the process easier.
-
 ## Risks
 
 - QGIS.org still points users at repositories that may contain plugins with low quality, we should state that federated repos goes beyond our responsability.
@@ -101,15 +104,17 @@ The federation will considerably decrease traffic on our server.
 
 ### Block new plugin uploads
 
-Once this QEP approved, any upload of new plugins should be blocked to make the migration process easier. Upload of new version might continue but will probably be blocked as well.
+Once this QEP approved, any upload of new plugins should be blocked to make the migration process easier. Upload of new version might continue but will enventually be blocked as well.
 This part can be done by blocking the login feature so the website will be read-only.
 
 ### Communication
 
 We recently implemented the email-verification feature which allows us to verify the correspondance of the auhtor listed in each plugin but also communicate breaking changes. With that in place, we could start a campaign that:
-- Communicate this QEP once approved
-- Communicate the planning of the implementation
-- Reminder on the effectivity of the federation
+- Communicates this QEP once approved
+- Communicates the planning of the implementation
+- Reminds on the effectivity of the federation
+
+The suggested recipents would be the Dev Mailing List, the Users mailing list, and Plugins Authors.
 
 
 ## Backwards Compatibility
