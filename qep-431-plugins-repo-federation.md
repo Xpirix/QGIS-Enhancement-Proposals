@@ -80,6 +80,22 @@ The hosting, management, policy, review process will be managed by an organizati
 
 Once the new repository is registered on the official QGIS.org, they will have a badge like "Not verified" both on plugins.qgis.org and on the plugin manager.
 
+## An easy way of adding a third-party repositories in QGIS
+
+The federation will move most of the plugins to other repositories and only Official QGIS plugins will be listed in QGIS by default.
+Then, to facilitate the process of adding other repositories in QGIS, we suggest the following
+
+### For User Group repositories
+- As mentioned above, the list will be merged into the `plugins.xml` served by the official repo and they will have a different tag/badge.
+- By default, they would not show in the plugin manager in the same order as the current `Experimental` and `Deprecated` plugins
+- Then, we would have an explicit checkbox to `Enable User group plugin repositories`
+
+### For Community repositories
+- In the plugin manager, we would have a `Find more plugins` that opens the directory in the user's browser.
+- On QGIS, we could implement a **custom MIME type that allows the drag&drop** of the repository link into QGIS
+- A similar approach would be to implement an URL protocol support in QGIS. We could have an `Install` button from the website that calls for an URL protocol, something like `qgis://add-plugin-repository?url=abc.org` or `qgis://install-plugin?name=DBManager` and execute the designed action with always a warning popup.
+- Adding a third party repository in QGIS would **pop up a warning** explaining the risk and potential dangers about them.
+
 
 ## Move plugins.qgis.org to a static website
 
