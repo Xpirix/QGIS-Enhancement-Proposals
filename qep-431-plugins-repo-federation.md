@@ -1,4 +1,4 @@
-# QGIS Enhancement:  Federate plugins repositories and quality enhancement
+# QGIS Enhancement:  Overhaul the QGIS plugin ecosystem
 
 **Date** 2026/10/14
 
@@ -6,20 +6,22 @@
 
 **Contact** lova at kartoza dot com
 
-**Version** QGIS Plugins Repository Website
+**Version** not applicable
 
 # Summary
 
-We held some **discussions during the contributor meeting in Laax** to gather ideas and suggestions about how could we improve the QGIS Plugins repository. We are facing problems due to its exponential growth. The convergence point leans toward the federation of the majority of  plugins away to other.
+**During the  the contributor meeting in Laax** we had a discussion to gather ideas and suggestions about how could we improve the QGIS Plugins repository. We are facing problems due to its exponential growth. This proposal stems from these discussion and moves us toward the federation of the majority of  plugins away to other repositories.
 
-There are too many new plugins/versions arriving on the Plugins repo for us to review effectively. The AI-assisted plugin development boom has increased the volume. We went from about 3k plugins at the beginning of 2026 to about 4.7k in October 2026. Reviews are shallow and there is only one main volunteer contributor (Admire a.k.a @NyakudyaA)  who does the review.
+- **Overload:** There are too many new plugins/versions arriving on the Plugins repo for us to review effectively. The AI-assisted plugin development boom has increased the volume. We went from about 3k plugins at the beginning of 2026 to about 4.7k in October 2026. Reviews are shallow and there is only one main volunteer contributor (Admire a.k.a @NyakudyaA)  who does the review.
 
-- **Security:** A plugin can do almost anything on the user's system and a proper security review is not realistic with current resources.
+- **Security:** A plugin can do almost anything on the user's system and a proper security review for each plugin is not realistic with current resources we have.
 - **Quality:** Some points were raised during the discussion about plugins that are forked from existing ones, plugins without open issue trackers, ones that are not easy to find in QGIS, ones with functionality duplicated, ones with non-English description.
-- **Tagging:** We need a tagging system so that users can filter our desirable or undesirable plugins (AI-assisted, needs subscription, binary blobs, post-install downloads, ads, manual installation...).
-- **Infrastructure pressure:** some parties harvest the whole repository every night. This eats bandwidth (and exceed the Hetzner traffic cap) and makes download counts meaningless. Ratings were open to vote-farming and have now been removed.
+- **Tagging:** We don't have a proper tagging system to allow users to filter out desirable or undesirable plugins. We envisage tags like:  AI-assisted, needs subscription, binary blobs, post-install downloads, ads, manual installation....etc.
+- **Infrastructure pressure:** some parties harvest the whole repository regularly. This eats bandwidth, causing us to often exceed the Hetzner traffic cap. When we exceed the traffic cap we get rate limited which incurs overage fees. Batch downloaders also make download counts meaningless. 
+- 
+- **Rating Farming:** Ratings were open to vote-farming and have now been removed.
 
-Earlier this year, we have implemented the QA and security checks ([QEP 409](https://github.com/qgis/QGIS-Enhancement-Proposals/blob/master/qep-409-plugins-security-validator.md)). It detects code-related security and quality issues from each plugin uploaded. However, the concerns related to the points mentioned above still remain.
+Earlier this year, we have implemented the QA and security checks ([QEP 409](https://github.com/qgis/QGIS-Enhancement-Proposals/blob/master/qep-409-plugins-security-validator.md)). It detects code-related security and quality issues for each plugin uploaded. However, the concerns related to the points mentioned above still remain.
 
 ## Terminology
 
@@ -33,11 +35,11 @@ Earlier this year, we have implemented the QA and security checks ([QEP 409](htt
 
 ### Federated repositories
 
-The main point is that **"if QGIS.org hosts something, people should able to trust it"** so we should make sure that the [Official QGIS Plugins repository](https://plugins.qgis.org) only provides plugins that users can trust. Any other doubtful plugins should be federated away to other repositories. From the discussion in Laax, this could be done in three levels:
+**"If QGIS.org hosts something, people should able to trust it"**. We should make sure that the [Official QGIS Plugins repository](https://plugins.qgis.org) only provides plugins that users can trust. Any other doubtful plugins should be federated away to other repositories, and a "responsibility gate" should be added into the process of adding external repositories. From the discussion in Laax, this could be done in three levels:
 
 #### 1. QGIS.org Hosted Plugins - 🛡️🛡️🛡️ (High trust)
 
-We will only host highly trusted plugins on the official plugins.qgis.org server. These plugins are **maintained by the QGIS community** and undergo **strict quality control**. The process to have a new plugin added to this list will be through a **[QEP (QGIS-Enhancement-Proposal)](https://github.com/qgis/QGIS-Enhancement-Proposals)**. Once the QEP approved, the author will be able to submit a new version of the plugin as many time as they want according to their release workflow, without a further review from QGIS.org.
+We will only host highly trusted plugins on the official plugins.qgis.org server. These plugins are **maintained by the QGIS community** and undergo **strict quality control**. The process to have a new plugin added to this list will be through a **[QEP (QGIS-Enhancement-Proposal)](https://github.com/qgis/QGIS-Enhancement-Proposals)**. Once the QEP is approved, the author will be able to submit new versions of the plugin whenever they want according to their release workflow, without a further review from QGIS.org.
 
 With that in place, there will be a list of few plugins that are hosted here with a badge (both on the website and the plugins manager) saying "Trusted by QGIS.org".
 
@@ -48,17 +50,17 @@ By User Groups, we are referring to the recognized ones listed at https://qgis.o
 - Switzerland
 - etc.
 
-For these, we will provide an initial repository template (see the section **Move plugins.qgis.org to a static website** below) to set up their repo on GitHub or Gitea etc. We note also that these plugins are not endorsed or checked by the QGIS project in any way, but they are endorsed by the local user group.
+We will provide an initial repository template (see the section **move plugins.qgis.org to a static website** below) to set up their repo on GitHub or Gitea etc. We will note in the plugin manager and in the directory of repositories that these plugins are not endorsed or checked by the QGIS project in any way, but they are endorsed by the local user group (our 'responsibility gate' mentioned above).
 
 The hosting, management, policy, review process will be managed by a user group. QGIS.org would:
 
-- Register the repository XML link to the official repo upon a request from a user group
+- Register the repository XML link to the official directory of repositories upon a request from a user group
 - Initially and periodically review the repository (not plugins)
-- Only list the repo link (no harvesting and plugins list) on the plugins.qgis.org website
-- These plugins won't be automatically listed in the plugin manager but a link will like 'Browse User Group Directory' will be added that points to the User Groups directory on plugins.qgis.org. 
+- Only list the repo link (no harvesting and plugins list) on the plugins.qgis.org website (which will functionally be both the directory platform and a plugin repository instance).
+- These plugins won't be automatically listed in the plugin manager because the user needs to explicitly add new repositories to the plugin manager. A link will like 'Browse User Group Directory' will be added to the plugin manager that points to the  directory of User Group repositories on plugins.qgis.org. 
 - Repository link will be user-first discovered.
-- Add a check mark badge with something like "**Trusted by QGIS NL**" for example
-- Repositories can be unlinked from the official repo
+- Add a check mark badge with something like "**Trusted by QGIS NL**", for example
+- QGIS.org may at any time remove a repository from the directory if e.g. the link is dead, there is no contactable maintainer, we have a community complaint about the repository etc.
 
 #### 3. Community Hosted Plugins - 🛡️ (Low trust)
 
@@ -75,9 +77,9 @@ The hosting, management, policy, review process will be managed by an organizati
 - Register the repository XML link to the official repo upon a request from an organization or individual
 - Initially and periodically review the repository (not plugins)
 - Only list the repo link (no harvesting and plugins list) on the plugins.qgis.org website
-- These plugins won't be automatically listed in the plugin manager but a link will like 'Browse Community Directory' will be added that points to the User Groups directory on plugins.qgis.org. 
-- Repository link will be user-first discovered.
-- Repositories can be unlinked from the official repo
+- Plugins that are in community repositores won't be automatically listed in the plugin manager until the user explicitly adds / enables the repository. A link will like 'Browse Community Directory' will be added that points to the Community directory on plugins.qgis.org. 
+- We will add a new feature to the plugin manager which will be a repository browser (along with responsibility gates to make sure they are informed about the risks when they do this).
+- QGIS.org may at any time remove a repository from the directory if e.g. the link is dead, there is no contactable maintainer, we have a community complaint about the repository etc. 
 
 Once the new repository is registered on the official QGIS.org, they will have a badge like "**Not verified**" both on plugins.qgis.org and on the plugin manager.
 
