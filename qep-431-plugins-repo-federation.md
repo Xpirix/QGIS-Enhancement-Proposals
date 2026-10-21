@@ -15,7 +15,8 @@ We held some **discussions during the contributor meeting in Laax** to gather id
 There are too many new plugins/versions arriving on the Plugins repo for us to review effectively. The AI-assisted plugin development boom has increased the volume. We went from about 3k plugins at the beginning of 2026 to about 4.7k in October 2026. Reviews are shallow and there is only one main volunteer contributor (@NyakudyaA)  who does the review.
 
 - **Security:** A plugin can do almost anything on the user's system and a proper security review is not realistic with current resources.
-- **Quality:** Some points were rised during the discussion about plugins that are forked from existing ones, plugins without open issue trackers, ones that are not easy to find in QGIS, ones with functionality duplicated, ones with non-English descripition, missing tags (AI-assisted, needs subscription, binary blobs, post-install downloads, ads, manual installation...)
+- **Quality:** Some points were rised during the discussion about plugins that are forked from existing ones, plugins without open issue trackers, ones that are not easy to find in QGIS, ones with functionality duplicated, ones with non-English descripition.
+- **Tagging:** We need a tagging system so that users can filter our desirable or undesirable plugins (AI-assisted, needs subscription, binary blobs, post-install downloads, ads, manual installation...).
 - **Infrastructure pressure:** some parties harvest the whole repository every night. This eats bandwidth (and exceed the Hetzner traffic cap) and makes download counts meaningless. Ratings were open to vote-farming and have now been removed.
 
 Earlier this year, we have implemented the QA and security checks (QEP 409) that catches real issues. However, it is more likely a tool exclusively focused on the code quality (with false positives and false negatives issues raised) without any functional checks.
