@@ -12,7 +12,7 @@
 
 We held some **discussions during the contributor meeting in Laax** to gather ideas and suggestion about how could we improve the QGIS Plugins repository. We are facing problems due to its exponential growth. The convergence point leans toward the federation of the majority of  plugins away to other.
 
-There are too many new plugins/versions arriving on the Plugins repo and the AI-assisted plugin has increased the volume. We went from about 3k plugins at the begining of 2026 to about 4.7k in October 2026. However, reviews are shallow and there is only one main volunteer contributor who does the review; and the qualities of plugins are at stakes with different angles:
+There are too many new plugins/versions arriving on the Plugins repo for us to review effectively. The AI-assisted plugin development boom has increased the volume. We went from about 3k plugins at the beginning of 2026 to about 4.7k in October 2026. Reviews are shallow and there is only one main volunteer contributor (@NyakudyaA)  who does the review.
 
 - **Security:** A plugin can do almost anything on the user's system and a proper security review is not realistic with current resources.
 - **Quality:** Some points were rised during the discussion about plugins that are forked from existing ones, plugins without open issue trackers, ones that are not easy to find in QGIS, ones with functionality duplicated, ones with non-English descripition, missing tags (AI-assisted, needs subscription, binary blobs, post-install downloads, ads, manual installation...)
