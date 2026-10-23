@@ -62,6 +62,7 @@ The hosting, management, policy, review process will be managed by a user group.
 - Initially and periodically review the repository (not plugins)
 - Only list the repo link (no harvesting and plugins list) on the plugins.qgis.org website (which will functionally be both the directory platform and a plugin repository instance).
 - These plugins won't be automatically listed in the plugin manager because the user needs to explicitly add new repositories to the plugin manager. A link will like 'Browse User Group Directory' will be added to the plugin manager that points to the  directory of User Group repositories on plugins.qgis.org. 
+- We will add a new feature to the plugin manager which will be a repository browser (along with responsibility gates to make sure they are informed about the risks when they do this).
 - Add a check mark badge with something like "**Trusted by QGIS NL**", for example
 - QGIS.org may at any time remove a repository from the directory if e.g. the link is dead, there is no contactable maintainer, we have a community complaint about the repository etc.
 
@@ -80,7 +81,7 @@ The hosting, management, policy, review process will be managed by an organizati
 - Register the repository XML link to the official repo upon a request from an organization or individual
 - Initially and periodically review the repository (not plugins)
 - Only list the repo link (no harvesting and plugins list) on the plugins.qgis.org website
-- Plugins that are in community repositores won't be automatically listed in the plugin manager until the user explicitly adds / enables the repository. A link will like 'Browse Community Directory' will be added that points to the Community directory on plugins.qgis.org. 
+- Plugins that are in community repositories won't be automatically listed in the plugin manager until the user explicitly adds / enables the repository. A link will like 'Browse Community Directory' will be added that points to the Community directory on plugins.qgis.org. 
 - We will add a new feature to the plugin manager which will be a repository browser (along with responsibility gates to make sure they are informed about the risks when they do this).
 - QGIS.org may at any time remove a repository from the directory if e.g. the link is dead, there is no contactable maintainer, we have a community complaint about the repository etc. 
 
@@ -89,26 +90,27 @@ Once the new repository is registered on the official QGIS.org, they will have a
 ## An easy way of adding a third-party repositories in QGIS
 
 The federation will move most of the plugins to other repositories and only Official QGIS plugins will be listed in QGIS by default.
-Then, to facilitate the process of adding other repositories in QGIS, we suggest the following process:
+Then, to facilitate the process of adding other repositories in QGIS, we suggest the following improvements:
 
-### For User Group repositories
+### Wireframe 1: New Tab in the Plugin Manager
 
-- In the plugin manager, we would have a `Browse User Groups Directory` that opens the mentioned directory on plugins.qgis.org.
-- On QGIS, we could implement a **custom MIME type that allows the drag&drop** of the repository link into QGIS
-- A similar approach would be to implement an URL protocol support in QGIS. We could have an `Install` button from the website that calls for an URL protocol, something like `qgis://add-plugin-repository?url=abc.org` or `qgis://install-plugin?name=DBManager` and execute the designed action with always a warning popup.
-- Adding a third party repository in QGIS would **pop up a warning** explaining the risk and potential dangers about them.
-- Once the repository is added and the plugins list is updated, each plugin from the repository will have the `Trusted by QGIS XX` badge.
+We suggest a new tab called **Repository browser** that will show the repository browser. 
 
-One open question would be: ***How should we handle the same plugin listed multiple times across different repository?***
+- The list of directory will be fetched from the plugins.qgis.org website.
+- Each repository shows its badge: **Trusted by QGIS.org**, **Trusted by QGIS NL** or **Not verified**.
+- The bottom panel shows the details of the selected repository.
+- The `Add` button registers the repository in one click and opens the warning below.
 
-### For Community repositories
+<!-- TODO: Add a wireframe design here -->
 
-- In the plugin manager, we would have a `Browse Community Directory` that opens the mentioned directory on plugins.qgis.org.
-- On QGIS, we could implement a **custom MIME type that allows the drag&drop** of the repository link into QGIS
-- A similar approach would be to implement an URL protocol support in QGIS. We could have an `Install` button from the website that calls for an URL protocol, something like `qgis://add-plugin-repository?url=abc.org` or `qgis://install-plugin?name=DBManager` and execute the designed action with always a warning popup.
-- Adding a third party repository in QGIS would **pop up a warning** explaining the risk and potential dangers about them.
-- Once the repository is added and the plugins list is updated, each plugin from the repository will have the `Not verified` badge.
+### Wireframe 2: Warning Before Adding a Repository
 
+- The dialog says who publishes the repository and what a plugin can do on the user's machine.
+- The `Add repository` button stays disabled until the risk is explicitly acknowledged.
+- Plugins hosted by QGIS.org don't show this warning.
+- Once added, the plugin manager will automatically fetch the plugins from the new repository and they will appear in the plugins list with the repository badge.
+
+![](./images/qep431/wireframe-2.webp)
 
 ## Move plugins.qgis.org to a static website
 
