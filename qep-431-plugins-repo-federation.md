@@ -10,7 +10,11 @@
 
 # Summary
 
+The QGIS plugin ecosystem is a major selling point for QGIS and at the same time a cause for concern on security, social and technical grounds.
+
 **During the  the contributor meeting in Laax** we had a discussion to gather ideas and suggestions about how could we improve the QGIS Plugins repository. We are facing problems due to its exponential growth. This proposal stems from these discussion and moves us toward the federation of the majority of  plugins away to other repositories.
+
+The problems we want to solve:
 
 - **Overload:** There are too many new plugins/versions arriving on the Plugins repo for us to review effectively. The AI-assisted plugin development boom has increased the volume. We went from about 3k plugins at the beginning of 2026 to about 4.7k in October 2026. Reviews are shallow and there is only one main volunteer contributor (Admire a.k.a @NyakudyaA)  who does the review.
 
@@ -58,7 +62,6 @@ The hosting, management, policy, review process will be managed by a user group.
 - Initially and periodically review the repository (not plugins)
 - Only list the repo link (no harvesting and plugins list) on the plugins.qgis.org website (which will functionally be both the directory platform and a plugin repository instance).
 - These plugins won't be automatically listed in the plugin manager because the user needs to explicitly add new repositories to the plugin manager. A link will like 'Browse User Group Directory' will be added to the plugin manager that points to the  directory of User Group repositories on plugins.qgis.org. 
-- Repository link will be user-first discovered.
 - Add a check mark badge with something like "**Trusted by QGIS NL**", for example
 - QGIS.org may at any time remove a repository from the directory if e.g. the link is dead, there is no contactable maintainer, we have a community complaint about the repository etc.
 
