@@ -4,7 +4,7 @@
 
 **Author** Lova Andriarimalala (@Xpirix) and Tim Sutton (@timlinux)
 
-**Contact** lova at kartoza dot com
+**Contact** lova at kartoza dot com / tim at kartoza dot com
 
 **Version** not applicable
 
