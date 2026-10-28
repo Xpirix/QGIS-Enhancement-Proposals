@@ -105,7 +105,7 @@ We suggest a new tab called **Repository browser** that will show the repository
 <!-- TODO: Add a wireframe design here -->
 
 ### Wireframe 2: Warning Before Adding a Repository
-
+- For context here, see also #284.
 - The dialog describes who publishes the repository and what a plugin can do on the user's machine.
 - The `Add repository` button stays disabled until the risk is explicitly acknowledged.
 - Official plugins hosted by QGIS.org don't show this warning.
