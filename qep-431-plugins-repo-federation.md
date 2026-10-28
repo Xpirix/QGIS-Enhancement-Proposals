@@ -78,7 +78,7 @@ For these, we will provide an initial repository template (see the section **Mov
 The hosting, management, policy, review process will be managed by an organization or individual. QGIS.org would:
 
 - Register the repository XML link to the community repo upon a request from an organization or individual
-- Initially and periodically review the repository (not plugins)
+- Initially and periodically review the repository (not plugins)  to ensure that it is online and available, and has a valid listing of plugins.
 - Only list the repo link (no harvesting and plugins list) on the plugins.qgis.org website
 - Plugins that are in community repositories won't be automatically listed in the plugin manager until the user explicitly adds / enables the repository.  
 - We will add a new feature to the plugin manager which will be a repository browser (along with responsibility gates to make sure they are informed about the risks when they do this).
