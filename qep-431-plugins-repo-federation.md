@@ -81,7 +81,7 @@ The hosting, management, policy, review process will be managed by an organizati
 - Initially and periodically review the repository (not plugins)  to ensure that it is online and available, and has a valid listing of plugins.
 - Only list the repo link (no harvesting and plugins list) on the plugins.qgis.org website
 - Plugins that are in community repositories won't be automatically listed in the plugin manager until the user explicitly adds / enables the repository.  
-- We will add a new feature to the plugin manager which will be a repository browser (along with responsibility gates to make sure they are informed about the risks when they do this).
+- We will add a new feature to the plugin manager which will be a repository browser (along with responsibility gates to make sure users are informed about the risks when they they add a repository).
 - QGIS.org may at any time remove a repository from the directory if e.g. the link is dead, there is no contactable maintainer, we have a community complaint about the repository etc. 
 
 Once the new repository is registered on the official plugins.qgis.org, they will have a badge like "**Not verified**" both on plugins.qgis.org and on the plugin manager.
