@@ -101,7 +101,9 @@ We suggest a new tab called **Repository browser** that will show the repository
 - The bottom panel shows the details of the selected repository.
 - The `Add` button registers the repository in one click and opens the warning below.
 
-<!-- TODO: Add a wireframe design here -->
+![](./images/qep431/plugins_repo_browser.webp)
+
+***Manually made with draw.io, no LLM involved.***
 
 ### Wireframe 2: Warning Before Adding a Repository
 
@@ -110,7 +112,9 @@ We suggest a new tab called **Repository browser** that will show the repository
 - Plugins hosted by QGIS.org don't show this warning.
 - Once added, the plugin manager will automatically fetch the plugins from the new repository and they will appear in the plugins list with the repository badge.
 
-![](./images/qep431/wireframe-2.webp)
+![](./images/qep431/repo_add_warning.webp)
+
+***Manually made with draw.io, no LLM involved.***
 
 ## Move plugins.qgis.org to a static website
 
