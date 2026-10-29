@@ -99,7 +99,7 @@ We suggest a new tab called **Repository browser** that will show the repository
 - The list of directories will be fetched from the plugins.qgis.org website.
 - Each repository shows its badge: **Trusted by QGIS.org**, **Trusted by QGIS NL** or **Not verified**.
 - The bottom panel shows the details of the selected repository.
-- The `Add` button registers the repository in one click and opens the warning below.
+- The `Add` button registers the repository in one click and opens the warning shown in the Wireframe 2.
 
 ![](./images/qep431/plugins_repo_browser.webp)
 
