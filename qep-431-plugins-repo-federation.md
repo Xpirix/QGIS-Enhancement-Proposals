@@ -95,7 +95,6 @@ Then, to facilitate the process of adding other repositories in QGIS, we suggest
 
 We suggest a new tab called **Repository browser** that will show the repository browser. 
 - We will add a new 'Repositories' tab in the QGIS plugin manager where you can browse the list of repositories in one of three categories (official, user groups, other). A button will let you add that repo to your list of subscribed repositories with a big warning.
-
 - Those who choose not to list their repo in the directory will need to direct users to add their repo manually.
 - The list of directories will be fetched from the plugins.qgis.org website.
 - Each repository shows its badge: **Trusted by QGIS.org**, **Trusted by QGIS NL** or **Not verified**.
