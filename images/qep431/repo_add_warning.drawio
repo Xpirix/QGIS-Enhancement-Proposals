@@ -20,10 +20,10 @@
           <mxGeometry height="30" width="140" x="10" y="30" as="geometry" />
         </mxCell>
         <mxCell id="h_unSdH00De2XAsmJaer-7" parent="h_unSdH00De2XAsmJaer-1" style="rounded=0;whiteSpace=wrap;html=1;align=left;fillColor=light-dark(#FFFFFF,#4D9900);fillStyle=auto;opacity=25;textOpacity=25;sketch=1;curveFitting=1;jiggle=2;" value="&amp;nbsp;🗃️ Repository browser" vertex="1">
-          <mxGeometry height="30" width="140" x="10" y="270" as="geometry" />
+          <mxGeometry height="30" width="140" x="10" y="240" as="geometry" />
         </mxCell>
         <mxCell id="h_unSdH00De2XAsmJaer-8" parent="h_unSdH00De2XAsmJaer-1" style="rounded=0;whiteSpace=wrap;html=1;align=left;opacity=25;textOpacity=25;sketch=1;curveFitting=1;jiggle=2;" value="&amp;nbsp;⚙️ Settings" vertex="1">
-          <mxGeometry height="30" width="140" x="10" y="240" as="geometry" />
+          <mxGeometry height="30" width="140" x="10" y="269.5" as="geometry" />
         </mxCell>
         <mxCell id="h_unSdH00De2XAsmJaer-9" parent="h_unSdH00De2XAsmJaer-1" style="rounded=0;whiteSpace=wrap;html=1;align=left;opacity=25;textOpacity=25;sketch=1;curveFitting=1;jiggle=2;" value="&amp;nbsp;🧩 Installed" vertex="1">
           <mxGeometry height="30" width="140" x="10" y="60" as="geometry" />
@@ -181,7 +181,7 @@
         <mxCell id="if733N9EdozOvksP-PTV-32" parent="h_unSdH00De2XAsmJaer-1" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=0;align=center;strokeColor=default;verticalAlign=middle;fillColor=#E6E6E6;sketch=1;curveFitting=1;jiggle=2;" value="https://jane.doe/plugins/plugins.xml" vertex="1">
           <mxGeometry height="33" width="351" x="479.5" y="307" as="geometry" />
         </mxCell>
-        <mxCell id="if733N9EdozOvksP-PTV-33" parent="h_unSdH00De2XAsmJaer-1" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=0;align=left;strokeColor=none;verticalAlign=top;sketch=1;curveFitting=1;jiggle=2;" value="✅ I understand the risk and I wan to add this repository" vertex="1">
+        <mxCell id="if733N9EdozOvksP-PTV-33" parent="h_unSdH00De2XAsmJaer-1" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=0;align=left;strokeColor=none;verticalAlign=top;sketch=1;curveFitting=1;jiggle=2;" value="✅ I understand the risk and I want to add this repository" vertex="1">
           <mxGeometry height="37" width="351" x="479.5" y="356" as="geometry" />
         </mxCell>
         <mxCell id="if733N9EdozOvksP-PTV-27" edge="1" parent="h_unSdH00De2XAsmJaer-1" source="if733N9EdozOvksP-PTV-13" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;sketch=1;curveFitting=1;jiggle=2;" target="if733N9EdozOvksP-PTV-26" value="">

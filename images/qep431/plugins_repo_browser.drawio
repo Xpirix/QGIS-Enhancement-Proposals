@@ -20,10 +20,10 @@
           <mxGeometry height="30" width="140" x="10" y="30" as="geometry" />
         </mxCell>
         <mxCell id="h_unSdH00De2XAsmJaer-7" parent="h_unSdH00De2XAsmJaer-1" style="rounded=0;whiteSpace=wrap;html=1;align=left;fillColor=light-dark(#66CC00,#4D9900);fillStyle=auto;sketch=1;curveFitting=1;jiggle=2;" value="&amp;nbsp;🗃️ Repository browser" vertex="1">
-          <mxGeometry height="30" width="140" x="10" y="270" as="geometry" />
+          <mxGeometry height="30" width="140" x="10" y="240" as="geometry" />
         </mxCell>
         <mxCell id="h_unSdH00De2XAsmJaer-8" parent="h_unSdH00De2XAsmJaer-1" style="rounded=0;whiteSpace=wrap;html=1;align=left;sketch=1;curveFitting=1;jiggle=2;" value="&amp;nbsp;⚙️ Settings" vertex="1">
-          <mxGeometry height="30" width="140" x="10" y="240" as="geometry" />
+          <mxGeometry height="30" width="140" x="10" y="267.5" as="geometry" />
         </mxCell>
         <mxCell id="h_unSdH00De2XAsmJaer-9" parent="h_unSdH00De2XAsmJaer-1" style="rounded=0;whiteSpace=wrap;html=1;align=left;sketch=1;curveFitting=1;jiggle=2;" value="&amp;nbsp;🧩 Installed" vertex="1">
           <mxGeometry height="30" width="140" x="10" y="60" as="geometry" />
