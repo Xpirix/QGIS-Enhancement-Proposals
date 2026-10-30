@@ -99,7 +99,7 @@ We suggest a new tab called **Repository browser** that will show the repository
 - The list of directories will be fetched from the plugins.qgis.org website.
 - Each repository shows its badge: **Trusted by QGIS.org**, **Trusted by QGIS NL** or **Not verified**.
 - The bottom panel shows the details of the selected repository.
-- The `Add` button registers the repository in one click and opens the warning below.
+- The `Add` button registers the repository in one click and opens the warning shown in the Wireframe 2.
 
 ![](./images/qep431/plugins_repo_browser.webp)
 
@@ -142,7 +142,7 @@ Issued from the discussion in Laax, a suggestion of adding new fields in metadat
 - `monetization`: free, freemium (paid add-ons), requires subscription, contains ads
 - `ai_usage`: none, assisted, generated
 - `network_access`: none, optional, required
-- `runtime_downloads`: true/false Does it fetch and install code or binaries after installation?
+- `runtime_downloads`: true/false Does it fetch and install code or data files after installation?
 - `native_binaries`: true/false (e.g. H3)
 - `ui_location`: Where to find it: menu path, toolbar, Processing provider, context menu
 - `languages` / `scope`: UI languages; global or local (country/region)
