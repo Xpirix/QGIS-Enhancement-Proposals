@@ -142,7 +142,7 @@ Issued from the discussion in Laax, a suggestion of adding new fields in metadat
 - `monetization`: free, freemium (paid add-ons), requires subscription, contains ads
 - `ai_usage`: none, assisted, generated
 - `network_access`: none, optional, required
-- `runtime_downloads`: true/false Does it fetch and install code or binaries after installation?
+- `runtime_downloads`: true/false Does it fetch and install code or data files after installation?
 - `native_binaries`: true/false (e.g. H3)
 - `ui_location`: Where to find it: menu path, toolbar, Processing provider, context menu
 - `languages` / `scope`: UI languages; global or local (country/region)
