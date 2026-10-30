@@ -106,7 +106,7 @@ We suggest a new tab called **Repository browser** that will show the repository
 ***Manually made with draw.io, no LLM involved.***
 
 ### Wireframe 2: Warning Before Adding a Repository
-- For context here, see also #284.
+- For context here, see also the issue [#284](https://github.com/qgis/QGIS-Enhancement-Proposals/issues/284).
 - The dialog describes who publishes the repository and what a plugin can do on the user's machine.
 - The `Add repository` button stays disabled until the risk is explicitly acknowledged.
 - Official plugins hosted by QGIS.org don't show this warning.
